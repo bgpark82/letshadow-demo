@@ -1,0 +1,1 @@
+insert into person(`id`,`name`,`age`,`address`,`birthday`,`job`) values(1,'peter',30,'강남','19890522','programmer');
