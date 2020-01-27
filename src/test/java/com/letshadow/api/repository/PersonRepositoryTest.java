@@ -21,7 +21,23 @@ class PersonRepositoryTest {
         List<Person> people = personRepository.findAll();
         System.out.println(people);
         assertThat(people.size()).isEqualTo(1);
-        assertThat(people.get(0).getName()).isEqualTo("peter");
+        assertAll(
+            ()->assertThat(people.get(0).getName()).isEqualTo("peter")
+        );
+    }
+
+    @Test
+    void getAllMonthOfBirthday() {
+        List<Person> people = personRepository.findByMonthOfBirthday(5);
+        assertAll(
+            ()->assertThat(people.get(0).getName()).isEqualTo("peter")
+        );
+    }
+
+    @Test
+    void getAllFindByPersonName(){
+        Person people = personRepository.findByPersonName("peter");
+        assertThat(people.getName()).isEqualTo("peter");
     }
 
     @Test
@@ -29,4 +45,13 @@ class PersonRepositoryTest {
         Person person = personRepository.findById(1L).orElse(null);
         assertThat(person.getName()).isEqualTo("peter");
     }
+
+    @Test
+    void findPeopleDeleted() {
+        List<Person> people = personRepository.findPeopleDeleted();
+        assertThat(people.size()).isEqualTo(1);
+        assertThat(people.get(0).getName()).isEqualTo("kassie");
+    }
+
+
 }

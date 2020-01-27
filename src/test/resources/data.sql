@@ -1,1 +1,2 @@
-insert into person(`id`,`name`,`age`,`address`,`birthday`,`job`) values(1,'peter',30,'강남','19890522','programmer');
+insert into person(`id`,`name`,`age`,`address`,`year_of_birthday`,`month_of_birthday`,`day_of_birthday`,`job`) values(1,'peter',30,'강남',1989,05,22,'programmer');
+insert into person(`id`,`name`,`age`,`address`,`year_of_birthday`,`month_of_birthday`,`day_of_birthday`,`job`,`deleted`) values(2,'kassie',27,'강남',1992,07,25,'teacher',true);
