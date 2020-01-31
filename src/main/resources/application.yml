@@ -4,3 +4,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: localhost:9300

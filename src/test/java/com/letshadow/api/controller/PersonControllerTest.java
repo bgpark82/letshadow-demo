@@ -108,7 +108,7 @@ class PersonControllerTest {
     }
 
     @Test
-    void updatePersonIfNameIsDiffrent() throws Exception {
+    void updatePersonIfNameIsDifferent() throws Exception {
         Person.PersonDTO dto = Person.PersonDTO.of("jame","판교",LocalDate.now(),"programmer","010-1111-1111");
 
         mockMvc.perform(
@@ -116,7 +116,9 @@ class PersonControllerTest {
                         .put("/api/v1/person/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(toJsonString(dto)))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value(ErrorCode.RENAME_NOT_PERMITTED.getCode()))
+                .andExpect(jsonPath("$.message").value(ErrorCode.RENAME_NOT_PERMITTED.getMessage()));
     }
 
     private String toJsonString(Person.PersonDTO personDTO) throws JsonProcessingException {
